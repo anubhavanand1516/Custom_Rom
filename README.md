@@ -234,6 +234,90 @@ git clone https://github.com/rakeshraimca/android_device_msm8953-common -b havoc
 
 #### Done. Now you’re all device sources are cloned. Now we are moving for the next step.
 
+### (8) Rom Bring up Or Fixing Device Tree :
+Guy’s Rom + Device sources are cloned successfully. But now we are going to do Rom bringup. In simple words, you are going to connect your device sources with ROM Source. For that, you need to modify some files in your Device Tree. So first go to your device tree using a command from Rom folder.
+
+#### #going to device tree folder.
+
+cd device/xiaomi/oxygen
+ 
+
+#### #what file and folders we have.
+
+ls
+
+You will see lots of files and folders. But we need to modify only five files. So which files we need to modify? listed here :
+
+rom.dependencies
+rom_oxygen.mk
+vendorsetup.sh
+AndroidProducts.mk
+
+#### #Let’s start with a first file. You need to rename rom.dependencies file to your room name.dependencies. we will use mv command for rename files and folders. In my case, I am building lineage os so the command is.
+
+mv rom.dependencies lineage.dependencies
+
+#### #rom_oxygen.mk rename according to your ROM.
+
+mv rom_oxygen.mk lineage_oxygen.mk
+
+according to the Rom, it will change like in pixel experience Rom it will be rename like aosp_oxygen.mk
+
+You can refer this from official device sources of another device. Like if you want to know lineage os device tree modification, then search in Google like lineage device git. And refer to any device tree.
+
+#### #create or modify vendorsetup.sh file.
+
+nano vendorsetup.sh
+
+#### #it will open that file. Clear all lines if you have and add some lines from bellow :
+
+add_lunch_combo rom_codename-userdebug
+
+Replace Rom with lineage (according to your Rom name). Replace code name with your device code name. Like in my case my command is
+
+add_lunch_combo lineage_oxygen-userdebug
+
+#### #Save vendorsetup.sh file. You need to press :
+
+#### CNTRL+O
+#### ENTER
+#### CNTRL+X
+
+#### #AndroidProducts.mk. We need to open this file.
+
+nano AndroidProducts.mk
+
+#### #replace with your Rom name and device code name like this :
+
+PRODUCT_MAKEFILES := \
+          $(LOCAL_DIR)/lineage_oxygen.mk
+
+#### #Save AndroidProducts.mk file.
+
+#### CNTRL+O
+#### ENTER
+#### CNTRL+X
+
+#### #Now we need to change some lines in lineage.mk file. open lineage.mk file.
+
+mano lineage_oxygen.mk
+
+#### #replace with Rom config file and Rom name like this :
+
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+#### #change Rom name in that line.
+
+PRODUCT_NAME := lineage_oxygen
+
+#### #Save lineage.mk file.
+
+#### CNTRL+O
+#### ENTER
+#### CNTRL+X
+
+Done your device tree is now fixed. So now your device tree is properly connected to your Rom source. Now you are ready to build your first Rom.
+
 
  
 

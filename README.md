@@ -43,3 +43,120 @@ There are lots of custom ROMs available on the internet. Like lineage os, aosp e
 ### (6) Download :
 [sociallocker] JuiceSSH – SSH Client App. This app will help you to connect your server via SSH on Android.[/sociallocker]
 
+## Now it's time for how to  Compile Rom 
+So all steps are similar for every device. so without wasting time let’s get started.
+
+### (1) create Ubuntu 16.04 server On AWS (Amazon Web Service) :
+Just create an account on Amazon Web Services (AWS). After activation, you are ready to launch an instance. First, go to your AWS dashboard. Go to services / EC2 / Launch instance / Select Ubuntu 16.04 LTS. After that click on 8cpu 32GB RAM instance. Click on Next: Configure Instance Details. Now don’t need to set anything. Just click on Next: Add Storage. Here you will see SIZE (GB). 8 GB is by default. So you need to change it with 200GB. Now just click on Next: Add tags. Add any tag if you want. After that click on Next: Configure Security Group. You will get SSH group so just change source tab custom to Anywhere. Now click on Review and launch. Now you need to click on the Launch button. It will ask you for a key pair. If you doing all these things so just create a new key pair. Don’t forget to download that key pair on your pc or phone. My key pair name is Roshan.pem. After launching an instance you will get your public Ip on dashboard /services /EC2 / instance. copy your public IP address.
+
+### (2) Connect Ubuntu 16.04 server via SSH on Android :
+You need to install JuiceSSH – SSH Client app from the above link or from Google play store
+
+
+#### You require 3 things to connect.
+
+ #### Public IP Address.
+
+ #### Keypair.
+ 
+ #### USERNAME: ubuntu
+ Open JuiceSSH – SSH Client App on Android. Go to Connections. Click on ➕ the plus icon to create a new Connection. Set it that like bellow :
+ 
+#### Nickname: Any
+#### Yupe: SSH
+#### Address: put your public Ip
+
+#### Identity: Add New.
+
+In identity fill like bellow:
+
+#### Nickname: any
+#### Username: ubuntu
+#### Private Key: select your key pair.
+Save it. Done now your instance is connected on your Android phone. Now open your Ubuntu 16.04 server from connection tab. It will open a terminal. Done your instance is ready to use.
+
+### (3) Setting Up Build Environment For Compiling ROM’s :
+You need to install some packages for building a custom ROMs. So you need to copy-paste that commands one by one and press enter. # lines are an explanation of commands so don’t copy # lines
+
+#### #get superuser access.
+
+sudo su
+
+#### #install JDK (press enter 2 times).
+
+add-apt-repository ppa:openjdk-r/ppa
+
+#### #update all packages.
+
+apt-get update
+
+#### #install more packages.
+
+apt-get install bison build-essential curl ccache flex lib32ncurses5-dev lib32z1-dev libesd0-dev libncurses5-dev libsdl1.2-dev libxml2 libxml2-utils lzop pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev git-core make phablet-tools gperf openjdk-8-jdk -y
+
+##### #become a normal user.
+
+exit
+
+#### #creating a bin folder.
+
+mkdir ~/bin
+
+PATH=~/bin:$PATH
+
+cd ~/bin
+
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+
+chmod a+x ~/bin/repo
+
+git clone https://github.com/akhilnarang/scripts.git scripts
+
+cd scripts
+
+bash setup/android_build_env.sh
+
+Done now your instance is ready for Compile Rom From Source. We are going to compile any rome do you wants.
+### (4) Create a Github account :
+Guys if you want to Compile Rom From Source Without PC then you will need to get more information about Github. You can get the information from Google. But you need to have an account on GitHub. So go to github.com and create your new account. If you have an account already then use the old one. We required your Github: username and email address for a letter use.
+
+### (5) Clone or Download ROM source :
+Now finally we are going to download a lineage os 16.0 ROM source in our server. You can use your favourite Rom source if you want. For downloading source first follow these steps and copy-paste bellow commands In your server:
+
+### create a Rom folder.
+
+mkdir room name
+
+(like I am creating a Havoc folder, so my command is mkdir lineage)
+
+#### #Go to ROM folder.
+
+cd lineage
+
+(replace lineage with your folder name).
+
+#### #Connect your Github account.
+
+git config –global user.email “EMAIL” && git config –global user.name “USERNAME”
+
+(Remove EMAIL and put your email. Remove USERNAME and put your username.) like this :
+
+git config –global user.email “anandanubhav1516@gmail.com” && git config –global user.name “anandanubhav1516”
+
+You need to understand some Github Commands.
+
+git clone – git clone Command use for downloading repositories from GitHub.
+
+branch (-b) – brach is defined for which brach you want to use. Like pie brach, oreo brach, Android Q brach etc.
+
+#### #To initialize lineage os 16.0 source.
+
+repo init -u git://github.com/Havoc/android.git -b Havoc-16.0
+
+#### #To sync up or downloading source.
+
+repo sync
+
+After repo sync, it will take a lot of time to download your source. Because sources are large in size like 30-40 GB. So wait until its stop downloading
+ 
+

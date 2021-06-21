@@ -201,5 +201,39 @@ I hope you will find your device sources for your device. Now we are going to cl
 #### PATH: whare you clone your sources in your server
 
 
+### (7) Clone your device sources :
+Now I am going to clone my sources now. So if you are building the same device like xiaomi Mi Max 2 then you can use these commands without changing anything. If you are using another device then use your device source URL, BRANCH, and PATH.
+
+#### #make sure you are in the Rom folder (in my case it is lineage). If you are not in the Rom folder then go using the cd command.
+
+cd lineage
+
+#### #device tree.
+
+git clone https://github.com/MaheshTechnicals/android_device_xiaomi_oxygen.git -b pixel device/xiaomi/oxygen
+
+#### Sometimes it’s according to your tree.
+
+git clone https://github.com/MaheshTechnicals/android_device_xiaomi_oxygen.git -b pixel device/xiaomi
+
+#### #Kernel Tree.
+
+git clone https://github.com/MaheshTechnicals/Kernel_xiaomi_oxygen -b lineage-16 kernel/xiaomi/msm8953
+
+#### #Vendor Tree.
+
+git clone https://github.com/MaheshTechnicals/android_vendor_oxygen -b lineage vendor/xiaomi
+
+##### Sometimes it’s according to your tree.
+
+git clone https://github.com/MaheshTechnicals/android_vendor_oxygen -b lineage vendor/xiaomi/oxygen
+
+#### #Common Tree.
+
+git clone https://github.com/rakeshraimca/android_device_msm8953-common -b havoc-new device/xiaomi/msm8953-common
+
+#### Done. Now you’re all device sources are cloned. Now we are moving for the next step.
+
+
  
 

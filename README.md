@@ -158,5 +158,48 @@ repo init -u git://github.com/Havoc/android.git -b Havoc-16.0
 repo sync
 
 After repo sync, it will take a lot of time to download your source. Because sources are large in size like 30-40 GB. So wait until its stop downloading
+
+### (6) What is Device sources:
+After downloading the Rom source. Now you need to know your device code name from Google. If you don’t know how to check the code name of your device. Just google it like code name of your device name. Like the code name of xiaomi MI Max 2. So in my case, my xiaomi MI Max 2 device code name is oxygen. The code name is needed guys. Now we need to clone Device sources. Like kernel tree, device tree, vendor tree. You can find your device sources from xda or GitHub. So find your tall trees first. If your phone has any custom rom available then go to that xda post. There you will get your device sources in the sources tab.
+You can also search your device sources in the Github search bar. Like I want device tree for my xiaomi Mi Max 2 oxygen. So I am going to search like that :
+
+For the device tree :
+device_xiaomi_oxygen
+
+For kernel tree :
+
+#### Kernel_xiaomi_oxygen
+
+OR
+
+#### Kernel_xiaomi_msm8953
+
+(msm8953 is my device chipset. So you may be different. So google it your device chipset).
+
+####For Vendor Tree :
+
+#### Vendor_xiaomi
+
+OR
+
+#### Vendor_xiaomi_oxygen (sometimes).
+
+#### For Common Tree :
+
+device_xiaomi_msm8953-common
+
+If this tree available for your device. Then you must use this tree as well. So the question is how we know a common tree is available for my device or not?. So simple is that go to your device tree / rom.dependencies file. Open that file. If you will see a common tree in that file. So you need to clone that tree also. If not then live it.
+
+I hope you will find your device sources for your device. Now we are going to clone our device sources like that. Format to clone trees:
+
+#### git clone URL -b BRANCH PATH
+
+#### URL: put your source URL.
+
+#### BRANCH: select your branch name from trees.
+
+#### PATH: whare you clone your sources in your server
+
+
  
 

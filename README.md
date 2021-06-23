@@ -318,6 +318,155 @@ PRODUCT_NAME := lineage_oxygen
 
 Done your device tree is now fixed. So now your device tree is properly connected to your Rom source. Now you are ready to build your first Rom.
 
+### (9) Build Or Compile Your ROM :
+After all these steps you are ready to Compile Rom From Source Without PC. So, guys, let’s start building or start a compilation of your Rom. Just follow the commands.
+
+#### #first go to Rom folder for that.
+
+cd
+
+cd lineage
+
+#### #Run build script.
+
+. build/envsetup.sh
+
+#### #Run caches.
+
+export USE_CCACHE=1 && ccache -M 50G && export CONFIG_STATE_NOTIFIER=y && export SELINUX_IGNORE_NEVERALLOWS=true
+
+#### #lunch your device. With your device code name like this.
+
+lunch lineage_oxygen-userdebug
+
+#### #Brunch your device. And put your device code name mine is oxygen so.
+
+brunch oxygen
+
+OR
+
+make bacon
+
+It will start Compiling a Rom For Your device. It will take 2-3 hours (it totally depends on your servers CPU and RAM) to build Rom so wait until 100%.
+
+### (10) Getting errors! How to fix those errors :
+If your Rom building stop by getting some errors? So you need to fix that errors first then compile again. If you are getting some error. Then cuppy that some error lines and search it on Google to fix. Then it will fix. Because mostly all errors and solutions you will get from Google. After fixing and error you need to follow to start building again.
+
+If you really search on Google but not getting any solutions. Then i will give you some telegram groups. Ask your questions there. They will definitely help you.
+
+#### #first go to Rom folder for that.
+
+cd
+
+cd lineage
+
+#### #Run build script.
+
+. build/envsetup.sh
+
+#### #Run caches.
+
+export USE_CCACHE=1 && ccache -M 50G && export CONFIG_STATE_NOTIFIER=y && export SELINUX_IGNORE_NEVERALLOWS=true
+
+#### #lunch your device. With your device code name like this.
+
+lunch lineage_oxygen-userdebug
+
+#### #Brunch your device. And put your device code name mine is oxygen so.
+
+brunch oxygen
+
+OR
+
+make bacon
+
+### 11. Upload ROM On Your Google Drive:
+After compile successfully. You need to transfer your ROM zip file to your Google Drive Account. For that, you will need a Gmail account. I don’t think so if anyone does not have that in this world. But if you did not have it then create that from Google drive website.
+
+OK so now we are ready to upload our first lineage os Rom on your google drive account. So follow the commands.
+
+#### #go to the home directory.
+
+cd
+
+#### #setup Google Drive.
+
+wget https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download
+
+#### #Rename to gdrive.
+
+mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
+
+#### #set permissions.
+
+chmod +x gdrive
+
+#### #install drive package.
+
+sudo install gdrive /usr/local/bin/gdrive
+
+#### #get a link.
+
+gdrive list
+
+After that command, you will get an authentication link in your terminal. So copy that link and paste in any browser. I am going to paste that link in my chrome browser. They will ask you to connect your Google account there. So just click on your Google account. Then they give you a verification code copy that code and paste it in your terminal then press enter.
+
+Done. Now your Google drive account is connected to your Ubuntu server. Now we are going to upload our Rom file.
+
+#### #go to your Rom zip file. Replace with your code name.
+
+cd lineage/out/target/product/oxygen
+
+ls
+
+#### #find your Rom file name. upload your ROM zip file to drive. Replace Rom.zip to your Rom file name.
+
+gdrive upload Rom.zip
+
+Done now your ROM zip file will upload on your Google Drive. So now go to your Google Drive account or Google drive app. Log in with same email ID which you used to connect the drive in a terminal. So download from it and test your Rom file.
+
+### 12. Upload Your ROM’s On Android File Host (AFH) Server Via Terminal:
+Guys if you are a developer then you should have knowledge about AFH. Android File Host provides cloud storage for your projects and other stuff. So if you want to upload and share your projects with others you can use that service for free. Finely we have our Custom Rom Rady to share with your friends. So now we are going to upload our ROM file into the AFH server via terminal. Let’s start.
+
+#### (1) First, create an account on androidfilehost.com.
+
+#### (2) Now request them via email for developer access. They will inform you via email.
+
+#### (3) If you will get your developer account. Now we need FTP access. Just again contact them via email and request for FTP access. It will take 2-3 days.
+
+####(4) After 2-3 days they will inform you. They will send your FTP Details like :
+
+An FTP server: uploads.androidfilehost.com
+
+FTP username: xxx
+
+FTP password: xxx
+
+FTP port: 21
+
+SFTP port: 23
+
+Save that details.
+
+#### (5) first, go to that directory where your Rom file is present. Mostly is in out/target/product/oxygen. Now we are ready to upload files On AFH with a terminal via FTP. You need a command for it. See the command below :
+
+curl –ftp-pasv -T FILENAME ftp://USERNAME:PASS@uploads.androidfilehost.com
+
+NOTE: You need to replace some lines according to your details like example
+
+FILE NAME: Name of your Rom file (AospExtended-v6.7-oxygen-20191206-1340-UNOFFICIAL.zip)
+
+USERNAME: put your FTP username here.
+
+PASS: Put your FTP Password.
+
+#### (6) After modifying the above command according to your details. Just press enter. Your Rom will start uploading on AFH. It will take 1-2 minutes to complete.
+
+#### (7) now go to your AFH Account. import your uploaded file from the FTP section. Done now your Rom file is on AFH. Share your ROM File with your device community or on xda.
+
+## NOW USED YOUR CUSTOM ROM WITH NEW FEATURE AND LOT OF CUSTOMIZATION.
+
+
 
  
 
